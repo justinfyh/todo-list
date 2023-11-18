@@ -6,10 +6,12 @@ import { Text, View } from '../../components/Themed';
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>To Do List</Text>
+      <View style={{flex:1}}>
+        <Text style={styles.title}>To Do List</Text>  
+      </View>
       {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
       {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
-      <View style={styles.inputcontainer}>
+      <View style={{flexDirection: 'row'}}>
         <TextInput
           style={styles.input}
           // onChangeText={onChangeNumber}
@@ -30,11 +32,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  inputcontainer: {
-    flex: 1,
-    flexDirection: 'row',
     justifyContent: 'flex-end',
   },
   title: {
@@ -54,6 +51,7 @@ const styles = StyleSheet.create({
     width: '80%',
     borderWidth: 1,
     padding: 10,
+    borderRadius: 4,
   },
   
   button: {
@@ -61,21 +59,14 @@ const styles = StyleSheet.create({
     width: '10%',
     marginTop: 12,
     marginRight: 12,
-
-
     alignItems: 'center',
     justifyContent: 'center',
-    // paddingVertical: 12,
-    // paddingHorizontal: 32,
     borderRadius: 4,
-    // elevation: 3,
     backgroundColor: 'white',
   },
   text: {
     fontSize: 16,
-    // lineHeight: 21,
     fontWeight: 'bold',
-    // letterSpacing: 0.25,
     color: 'black',
   },
 });
