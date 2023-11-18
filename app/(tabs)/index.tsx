@@ -1,6 +1,5 @@
 import { StyleSheet, TextInput, Button, Pressable } from 'react-native';
 
-import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
 export default function TabOneScreen() {
@@ -14,7 +13,6 @@ export default function TabOneScreen() {
       <View style={{flexDirection: 'row'}}>
         <TextInput
           style={styles.input}
-          // onChangeText={onChangeNumber}
           // value={number}
           placeholderTextColor={"gray"}
           placeholder="useless placeholder"
@@ -37,12 +35,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    marginTop: 10,
   },
   separator: {
     marginVertical: 30,
     height: 1,
     width: '80%',
   },
+
   input: {
     color: '#ffffff',
     borderColor: 'white',
