@@ -9,6 +9,8 @@ import { getDBConnection, getTodoItems, saveTodoItems, createTable,  deleteTodoI
 export default function TabOneScreen() {
   const [todos, setTodos] = useState<ToDoItem[]>([]);
   const [newTodo, setNewTodo] = useState('');
+
+  // async functions for getting, adding and deleting
   const loadDataCallback = useCallback(async () => {
     try {
       const db = await getDBConnection();
@@ -24,6 +26,7 @@ export default function TabOneScreen() {
   useEffect(() => {
     loadDataCallback();
   }, [loadDataCallback]);
+
   const addTodo = async () => {
     if (!newTodo.trim()) return;
     try {
@@ -41,6 +44,7 @@ export default function TabOneScreen() {
       console.error(error + "g2");
     }
   };
+
   const deleteItem = async (id: number) => {
     try {
       const db = await getDBConnection();
@@ -55,13 +59,11 @@ export default function TabOneScreen() {
     }
   };
   
+  // render page
   return (
     <View style={styles.container}>
-
-      {/* <View style={{flex:1, alignItems: 'center'}}> */}
-        {/* <Text style={styles.title}>To Do List</Text>  */}
-        <ScrollView style={{zIndex: 0,}}>
-        <View style={{zIndex: 0,}} >
+      <ScrollView>
+        <View>
         {todos.length === 0 ? (
             <Text style={styles.nothingtext}>nothing to do...</Text>
           ) : (
@@ -70,12 +72,9 @@ export default function TabOneScreen() {
             ))
           )}
         </View> 
-        {/* <Text>nothing to do...</Text> */}
-        </ScrollView>
-        
-      {/* </View> */}
+      </ScrollView>
 
-      <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent', bottom: 12, position: 'absolute', left: 12,}}>
+      <View style={styles.inputcontainer}>
         <TextInput
           style={styles.input}
           value={newTodo}
@@ -86,14 +85,14 @@ export default function TabOneScreen() {
           onSubmitEditing={addTodo}
         />
         <Pressable style={styles.button} onPress={addTodo} >
-          <Text style={styles.text}>+</Text>
+          <Text style={styles.addtext}>+</Text>
         </Pressable>
       </View>
-
     </View>
   );
 }
 
+// styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -104,15 +103,13 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     backgroundColor: 'transparent',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  inputcontainer: {
+    flexDirection: 'row', 
+    borderRadius: 4, 
+    backgroundColor: 'transparent', 
+    bottom: 12, 
+    position: 'absolute', 
+    left: 12,
   },
 
   input: {
@@ -126,7 +123,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 4,
   },
-  
   button: {
     height: 45,
     width: '12%',
@@ -138,11 +134,12 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     marginRight: 1,
   },
-  text: {
+  addtext: {
     fontSize: 26,
     fontWeight: 'bold',
     color: 'black',
   },
+  
   nothingtext: {
     marginTop: 20,
     fontSize: 16,

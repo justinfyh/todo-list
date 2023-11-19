@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -22,7 +21,6 @@ export const ToDoItemComponent: React.FC<{
       </View>
       <Pressable style={styles.button} onPress={() => deleteItem(id)} >
         <Image source={require('../assets/images/check-mark.png')} style={styles.icon}/>
-        {/* <Text style={styles.text}>-</Text> */}
       </Pressable>
     </View>
   );
@@ -35,7 +33,6 @@ const styles = StyleSheet.create({
     marginRight: 3,
     height: 45,
   },
-
   todoTextContainer: {
     justifyContent: 'center',
     paddingHorizontal: 20,
@@ -58,11 +55,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: 'white',
-  },
-  text: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'black',
   },
   icon: {
     width: '62%',
