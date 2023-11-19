@@ -1,5 +1,7 @@
 import { StyleSheet, TextInput, Button, Pressable } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
+import { enablePromise, openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
+
 
 import { Text, View } from '../../components/Themed';
 import { ToDoItem } from '../../models';
@@ -11,14 +13,14 @@ export default function TabOneScreen() {
   const [newTodo, setNewTodo] = useState('');
   const loadDataCallback = useCallback(async () => {
     try {
-      // const initTodos = [{ id: 0, value: 'go to shop' }, { id: 1, value: 'eat at least a one healthy foods' }, { id: 2, value: 'Do some exercises' }];
+      const initTodos = [{ id: 0, value: 'go to shop' }, { id: 1, value: 'eat at least a one healthy foods' }, { id: 2, value: 'Do some exercises' }];
       const db = await getDBConnection();
       await createTable(db);
       const storedTodoItems = await getTodoItems(db);
       // if (storedTodoItems.length) {
-        if (storedTodoItems != null) {
+        // if (storedTodoItems != null) {
           setTodos(storedTodoItems);
-        }
+        // }
       // } else {
       //   await saveTodoItems(db, initTodos);
       //   setTodos(initTodos);
@@ -44,7 +46,7 @@ export default function TabOneScreen() {
       await saveTodoItems(db, newTodos);
       setNewTodo('');
     } catch (error) {
-      console.error(error);
+      console.error(error + "g2");
     }
   };
   const deleteItem = async (id: number) => {
@@ -54,7 +56,7 @@ export default function TabOneScreen() {
       todos.splice(id, 1);
       setTodos(todos.slice(0));
     } catch (error) {
-      console.error(error);
+      console.error(error + "g3");
     }
   };
   return (
