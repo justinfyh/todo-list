@@ -19,7 +19,7 @@ export default function TabOneScreen() {
       const storedTodoItems = await getTodoItems(db);
       // if (storedTodoItems.length) {
         // if (storedTodoItems != null) {
-          setTodos(storedTodoItems);
+      setTodos(storedTodoItems);
         // }
       // } else {
       //   await saveTodoItems(db, initTodos);
@@ -53,12 +53,16 @@ export default function TabOneScreen() {
     try {
       const db = await getDBConnection();
       await deleteTodoItem(db, id);
-      todos.splice(id, 1);
-      setTodos(todos.slice(0));
+  
+      // Create a new array without the deleted item
+      const updatedTodos = todos.filter(todo => todo.id !== id);
+  
+      setTodos(updatedTodos);
     } catch (error) {
       console.error(error + "g3");
     }
   };
+  
   return (
     <View style={styles.container}>
       <View style={{flex:1, alignItems: 'center'}}>
