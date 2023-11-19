@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Pressable,
+  Image,
 } from 'react-native';
 import { ToDoItem } from '../models';
 export const ToDoItemComponent: React.FC<{
@@ -20,7 +21,8 @@ export const ToDoItemComponent: React.FC<{
         </Text>
       </View>
       <Pressable style={styles.button} onPress={() => deleteItem(id)} >
-        <Text style={styles.text}>-</Text>
+        <Image source={require('../assets/images/check-mark.png')} style={styles.icon}/>
+        {/* <Text style={styles.text}>-</Text> */}
       </Pressable>
     </View>
   );
@@ -62,4 +64,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
+  icon: {
+    width: '62%',
+    height: '59%',
+  }
 });

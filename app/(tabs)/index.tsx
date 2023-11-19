@@ -76,7 +76,7 @@ export default function TabOneScreen() {
           value={newTodo}
           onChangeText={text => setNewTodo(text)}
           placeholderTextColor={"gray"}
-          placeholder="useless placeholder"
+          placeholder="what to do..."
           keyboardType="default"
           onSubmitEditing={addTodo}
         />
