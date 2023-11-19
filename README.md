@@ -15,6 +15,7 @@
 ### Empty todo list
 
 ![image](https://github.com/justinfyh/todo-list/assets/100667353/726601cf-3a58-485a-bf0b-a26ffb13b967 | width=837)
+<img src="https://github.com/justinfyh/todo-list/assets/100667353/726601cf-3a58-485a-bf0b-a26ffb13b967" width="837" />
 
 ### Todo list with one item
 
