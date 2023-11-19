@@ -62,10 +62,15 @@ export default function TabOneScreen() {
         {/* <Text style={styles.title}>To Do List</Text>  */}
         <ScrollView style={{zIndex: 0,}}>
         <View style={{zIndex: 0,}} >
-          {todos.map((todo) => (
+        {todos.length === 0 ? (
+            <Text style={styles.nothingtext}>nothing to do...</Text>
+          ) : (
+            todos.map((todo) => (
               <ToDoItemComponent key={todo.id} todo={todo} deleteItem={deleteItem} />
-            ))}
+            ))
+          )}
         </View> 
+        {/* <Text>nothing to do...</Text> */}
         </ScrollView>
         
       {/* </View> */}
@@ -138,4 +143,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
+  nothingtext: {
+    marginTop: 20,
+    fontSize: 16,
+  }
 });
