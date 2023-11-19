@@ -59,7 +59,7 @@ export default function TabOneScreen() {
     <View style={styles.container}>
 
       <View style={{flex:1, alignItems: 'center'}}>
-        <Text style={styles.title}>To Do List</Text> 
+        {/* <Text style={styles.title}>To Do List</Text>  */}
         <ScrollView>
         <View style={{}} >
           {todos.map((todo) => (
@@ -70,7 +70,7 @@ export default function TabOneScreen() {
         
       </View>
 
-      <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent',}}>
+      <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent', marginTop: 8,}}>
         <TextInput
           style={styles.input}
           value={newTodo}
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: 'white',
+    marginRight: 1,
   },
   text: {
     fontSize: 26,
