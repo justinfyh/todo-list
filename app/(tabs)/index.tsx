@@ -1,7 +1,7 @@
-import { StyleSheet, TextInput, Button, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, TextInput, Button, Pressable, ScrollView, View } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Text, View } from '../../components/Themed';
+import { Text } from '../../components/Themed';
 import { ToDoItem } from '../../models';
 import { ToDoItemComponent } from '../../components/ToDoItem';
 import { getDBConnection, getTodoItems, saveTodoItems, createTable,  deleteTodoItem } from '../db-service';
@@ -58,19 +58,19 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
 
-      <View style={{flex:1, alignItems: 'center'}}>
+      {/* <View style={{flex:1, alignItems: 'center'}}> */}
         {/* <Text style={styles.title}>To Do List</Text>  */}
-        <ScrollView>
-        <View style={{}} >
+        <ScrollView style={{zIndex: 0,}}>
+        <View style={{zIndex: 0,}} >
           {todos.map((todo) => (
               <ToDoItemComponent key={todo.id} todo={todo} deleteItem={deleteItem} />
             ))}
         </View> 
         </ScrollView>
         
-      </View>
+      {/* </View> */}
 
-      <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent', marginTop: 8,}}>
+      <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent', bottom: 12, position: 'absolute', left: 12,}}>
         <TextInput
           style={styles.input}
           value={newTodo}
@@ -78,6 +78,7 @@ export default function TabOneScreen() {
           placeholderTextColor={"gray"}
           placeholder="useless placeholder"
           keyboardType="default"
+          onSubmitEditing={addTodo}
         />
         <Pressable style={styles.button} onPress={addTodo} >
           <Text style={styles.text}>+</Text>
@@ -93,7 +94,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: 12,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 12,
+    backgroundColor: 'transparent',
   },
   title: {
     fontSize: 20,
@@ -111,7 +115,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     backgroundColor: 'black',
     height: 45,
-    marginRight: 12,
+    marginRight: 10,
     width: '85%',
     borderWidth: 1,
     padding: 10,
@@ -125,6 +129,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: 'white',
+    borderWidth: 1.5,
+    borderColor: 'gray',
     marginRight: 1,
   },
   text: {
