@@ -36,11 +36,13 @@ const styles = StyleSheet.create({
   todoTextContainer: {
     justifyContent: 'center',
     paddingHorizontal: 20,
-    backgroundColor: 'gray',
-    borderRadius: 10,
+    backgroundColor: '#333333',
+    borderRadius: 4,
     borderWidth: 1,
+    borderColor: 'gray',
     marginRight: 12,
-    width: '82%',
+    marginLeft: 0,
+    width: '85%',
   },
   sectionTitle: {
     color: 'white',

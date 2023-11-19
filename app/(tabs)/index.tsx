@@ -1,7 +1,5 @@
 import { StyleSheet, TextInput, Button, Pressable } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
-import { enablePromise, openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
-
 
 import { Text, View } from '../../components/Themed';
 import { ToDoItem } from '../../models';
@@ -13,18 +11,12 @@ export default function TabOneScreen() {
   const [newTodo, setNewTodo] = useState('');
   const loadDataCallback = useCallback(async () => {
     try {
-      const initTodos = [{ id: 0, value: 'go to shop' }, { id: 1, value: 'eat at least a one healthy foods' }, { id: 2, value: 'Do some exercises' }];
       const db = await getDBConnection();
       await createTable(db);
       const storedTodoItems = await getTodoItems(db);
-      // if (storedTodoItems.length) {
-        // if (storedTodoItems != null) {
+
       setTodos(storedTodoItems);
-        // }
-      // } else {
-      //   await saveTodoItems(db, initTodos);
-      //   setTodos(initTodos);
-      // }
+
     } catch (error) {
       console.error(error + "df");
     }
@@ -65,6 +57,7 @@ export default function TabOneScreen() {
   
   return (
     <View style={styles.container}>
+
       <View style={{flex:1, alignItems: 'center'}}>
         <Text style={styles.title}>To Do List</Text> 
         <View style={{}} >
@@ -73,10 +66,8 @@ export default function TabOneScreen() {
             ))}
         </View> 
       </View>
-      
-      {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
-      {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
-      <View style={{flexDirection: 'row', borderRadius: 4, }}>
+
+      <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent',}}>
         <TextInput
           style={styles.input}
           value={newTodo}
@@ -89,6 +80,7 @@ export default function TabOneScreen() {
           <Text style={styles.text}>+</Text>
         </Pressable>
       </View>
+
     </View>
   );
 }
@@ -113,6 +105,7 @@ const styles = StyleSheet.create({
   input: {
     color: '#ffffff',
     borderColor: 'white',
+    backgroundColor: 'black',
     height: 45,
     marginRight: 12,
     width: '80%',
