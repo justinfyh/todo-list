@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, Button, Pressable } from 'react-native';
+import { StyleSheet, TextInput, Button, Pressable, ScrollView } from 'react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Text, View } from '../../components/Themed';
@@ -60,11 +60,14 @@ export default function TabOneScreen() {
 
       <View style={{flex:1, alignItems: 'center'}}>
         <Text style={styles.title}>To Do List</Text> 
+        <ScrollView>
         <View style={{}} >
           {todos.map((todo) => (
               <ToDoItemComponent key={todo.id} todo={todo} deleteItem={deleteItem} />
             ))}
         </View> 
+        </ScrollView>
+        
       </View>
 
       <View style={{flexDirection: 'row', borderRadius: 4, backgroundColor: 'transparent',}}>
@@ -95,6 +98,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    marginBottom: 10,
   },
   separator: {
     marginVertical: 30,
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     height: 45,
     marginRight: 12,
-    width: '80%',
+    width: '85%',
     borderWidth: 1,
     padding: 10,
     borderRadius: 4,
