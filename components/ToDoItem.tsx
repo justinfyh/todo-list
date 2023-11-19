@@ -20,7 +20,7 @@ export const ToDoItemComponent: React.FC<{
         </Text>
       </View>
       <Pressable style={styles.button} onPress={() => deleteItem(id)} >
-        <Text style={styles.text}>Y</Text>
+        <Text style={styles.text}>-</Text>
       </Pressable>
     </View>
   );
@@ -48,16 +48,14 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   button: {
-    width: '12%',
-
-    
+    width: '12%',    
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4,
     backgroundColor: 'white',
   },
   text: {
-    fontSize: 16,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'black',
   },

@@ -86,7 +86,7 @@ export default function TabOneScreen() {
           keyboardType="default"
         />
         <Pressable style={styles.button} onPress={addTodo} >
-          <Text style={styles.text}>Y</Text>
+          <Text style={styles.text}>+</Text>
         </Pressable>
       </View>
     </View>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   text: {
-    fontSize: 16,
+    fontSize: 26,
     fontWeight: 'bold',
     color: 'black',
   },
