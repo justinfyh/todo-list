@@ -11,18 +11,20 @@ export default function TabOneScreen() {
   const [newTodo, setNewTodo] = useState('');
   const loadDataCallback = useCallback(async () => {
     try {
-      const initTodos = [{ id: 0, value: 'go to shop' }, { id: 1, value: 'eat at least a one healthy foods' }, { id: 2, value: 'Do some exercises' }];
+      // const initTodos = [{ id: 0, value: 'go to shop' }, { id: 1, value: 'eat at least a one healthy foods' }, { id: 2, value: 'Do some exercises' }];
       const db = await getDBConnection();
       await createTable(db);
       const storedTodoItems = await getTodoItems(db);
-      if (storedTodoItems.length) {
-        setTodos(storedTodoItems);
-      } else {
-        await saveTodoItems(db, initTodos);
-        setTodos(initTodos);
-      }
+      // if (storedTodoItems.length) {
+        if (storedTodoItems != null) {
+          setTodos(storedTodoItems);
+        }
+      // } else {
+      //   await saveTodoItems(db, initTodos);
+      //   setTodos(initTodos);
+      // }
     } catch (error) {
-      console.error(error);
+      console.error(error + "df");
     }
   }, []);
   useEffect(() => {
@@ -57,18 +59,18 @@ export default function TabOneScreen() {
   };
   return (
     <View style={styles.container}>
-      <View style={{flex:1}}>
-        <Text style={styles.title}>To Do List</Text>  
-        
+      <View style={{flex:1, alignItems: 'center'}}>
+        <Text style={styles.title}>To Do List</Text> 
+        <View style={{}} >
+          {todos.map((todo) => (
+              <ToDoItemComponent key={todo.id} todo={todo} deleteItem={deleteItem} />
+            ))}
+        </View> 
       </View>
-      <View style={{flex:1}} >
-      {todos.map((todo) => (
-            <ToDoItemComponent key={todo.id} todo={todo} deleteItem={deleteItem} />
-          ))}
-      </View>
+      
       {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
       {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', borderRadius: 4, }}>
         <TextInput
           style={styles.input}
           value={newTodo}
@@ -90,11 +92,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
+    padding: 12,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 10,
   },
   separator: {
     marginVertical: 30,
@@ -105,8 +107,8 @@ const styles = StyleSheet.create({
   input: {
     color: '#ffffff',
     borderColor: 'white',
-    height: 40,
-    margin: 12,
+    height: 45,
+    marginRight: 12,
     width: '80%',
     borderWidth: 1,
     padding: 10,
@@ -114,10 +116,8 @@ const styles = StyleSheet.create({
   },
   
   button: {
-    height: 40,
-    width: '10%',
-    marginTop: 12,
-    marginRight: 12,
+    height: 45,
+    width: '12%',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4,

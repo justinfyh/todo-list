@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
 } from 'react-native';
 import { ToDoItem } from '../models';
 export const ToDoItemComponent: React.FC<{
@@ -18,32 +19,46 @@ export const ToDoItemComponent: React.FC<{
           {value}
         </Text>
       </View>
-      <Button
-        onPress={() => deleteItem(id)}
-        title="done"
-        color="#841584"
-        accessibilityLabel="add todo item"
-      />
+      <Pressable style={styles.button} onPress={() => deleteItem(id)} >
+        <Text style={styles.text}>Y</Text>
+      </Pressable>
     </View>
   );
 };
 const styles = StyleSheet.create({
   todoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 10,
-    paddingHorizontal: 24,
-    backgroundColor: 'deepskyblue',
-    marginLeft: 20,
-    marginRight: 20,
-    borderRadius: 10,
-    borderColor: 'black',
-    borderWidth: 1,
+    height: 45,
   },
+
   todoTextContainer: {
     justifyContent: 'center',
-    flexDirection: 'row',
+    paddingHorizontal: 20,
+    backgroundColor: 'gray',
+    borderRadius: 10,
+    borderWidth: 1,
+    marginRight: 12,
+    width: '82%',
   },
   sectionTitle: {
-    fontSize: 20,
+    color: 'white',
+    fontSize: 16,
     fontWeight: '400',
-  }
+  },
+  button: {
+    width: '12%',
+
+    
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    backgroundColor: 'white',
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
 });
